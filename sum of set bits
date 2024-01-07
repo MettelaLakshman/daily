@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int a,b,c=0,s=2;
+        int nu=n+1;
+        int w=0;
+        while(1)
+        {
+            a=(nu/s)*(s/2);
+            b=(nu%s)-(s/2);
+            c+=a;
+            if(a==0 && b<0)
+            {
+                w=1;
+                break;
+            }
+            if(b>0)
+                c+=b;
+            s*=2;
+        }
+        cout<<c<<"\n";
+    }
+}
