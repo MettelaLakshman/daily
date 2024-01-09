@@ -1,0 +1,29 @@
+vector <int> search(string pat, string txt)
+        {
+            //code here
+            vector<int>vt;
+            int flag=-1,s=0;
+            int x=pat.size();
+            for(int i=0;i<txt.size()-x+1;i++)
+            {
+                s=0;
+                int temp=0;
+                for(int j=i;j<i+x;j++)
+                {
+                    if(txt[j]==pat[temp])
+                    {
+                        temp++;
+                    }
+                    else
+                    {
+                        s=1;
+                        break;
+                    }
+                }
+                if(!s)
+                {
+                    vt.push_back(i+1);
+                }
+            }
+            return vt;
+        }
