@@ -1,0 +1,24 @@
+public:
+		long long int PowMod(long long int x,long long int n,long long int M)
+		{
+		    // Code here
+		    long long int mod=1e9+7;
+		    long long res=1;
+		    M=M%mod;
+		    while(n)
+		    {
+		        if(n&1)
+		        {
+		            n-=1;
+		            res*=x;
+		            res=res%M;
+		        }
+		        else
+		        {
+		            n/=2;
+		            x=x*x;
+		            x=x%M;
+		        }
+		    }
+		    return res;
+		}
