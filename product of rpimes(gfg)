@@ -1,0 +1,64 @@
+class Solution{
+public:
+    int prime(int n)
+    {
+        for(int i=2;i<=sqrt(n);i++)
+        {
+            if(n%i==0)
+            {
+                return 0;
+            }
+        }
+        return 1;
+    }
+    long long primeProduct(long long a, long long b){
+        // code here
+        int c=b-a;
+        vector<int>vt(c+1,1);
+        vector<int>ans;
+        for(int i=2;i<=sqrt(b);i++)
+        {
+            if(prime(i))
+            {
+                ans.push_back(i);
+                //cout<<i<<" ";
+            }
+        }
+        for(int i=0;i<ans.size();i++)
+        {
+            if(a%ans[i]==0)
+            {
+                for(int j=0;j<=c;j+=ans[i])
+                {
+                    vt[j]=0;
+                }
+            }
+            else
+            {
+                int w=ans[i]+(ans[i]*(a/ans[i]));
+                int d=(w-a);
+                for(int j=d;j<=c;j+=ans[i])
+                {
+                    
+                    if(ans[i]!=j+a) 
+                    {
+                        vt[j]=0;
+                    }
+                }
+            }
+        }
+	    long long int p=1;
+        for(int i=0;i<vt.size();i++)
+        {
+            if(vt[i]==1)
+            {
+                int g=(i+a);
+                g=g%1000000007;
+                p=p*g;
+                p=p%(1000000007);
+            }
+        }
+        //cout<<p%(1000000007);
+        return p%1000000007;
+    }
+};
