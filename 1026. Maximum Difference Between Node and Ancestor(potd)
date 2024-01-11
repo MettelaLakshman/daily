@@ -1,0 +1,25 @@
+lass Solution {
+public:
+    int res=0;
+    void helper(TreeNode *root,int ma,int mi)
+    {
+        //int max=root->val,min=root->val;
+        if(root==NULL)return;
+        if(root->val<=mi)
+        {
+            mi=root->val;
+        }
+        if(root->val>ma)
+        {
+            ma=root->val;
+        }
+        res=max(res,ma-mi);
+        helper(root->left,ma,mi);
+        helper(root->right,ma,mi);
+    }
+    int maxAncestorDiff(TreeNode* root) {
+        int ma=root->val,mi=root->val;
+        helper(root,ma,mi);
+        return res;
+    }
+};
