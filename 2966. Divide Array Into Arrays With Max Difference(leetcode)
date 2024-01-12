@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<vector<int>> divideArray(vector<int>& vt, int k) {
+        sort(vt.begin(),vt.end());
+        int c=0;
+        vector<vector<int>>ans;
+        for(int i=0;i<vt.size();i+=3)
+        {
+            vector<int>p;
+            p.push_back(vt[i]);
+            p.push_back(vt[i+1]);
+            p.push_back(vt[i+2]);
+            ans.push_back(p);
+            if(abs(vt[i]-vt[i+1])<=k && abs(vt[i+1]-vt[i+2])<=k && abs(vt[i]-vt[i+2])<=k)
+            {
+                c++;
+            }
+        }
+        int x=ans.size();
+        if(x==c)return ans;
+        return {};
+    }
+};
