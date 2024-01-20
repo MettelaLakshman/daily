@@ -2,15 +2,13 @@ class Solution {
 public:
     int maxNumOfMarkedIndices(vector<int>& nums) {
         sort(nums.begin(),nums.end());
-        cout<<nums.size()<<" ";
+        //cout<<nums.size()<<" ";
         int c=0,i=0,j=nums.size()/2,k=j;
         while(j<nums.size())
         {
             if(i>=k)break;
             if(2*nums[i]<=nums[j])
             {
-                nums[i]=1;
-                nums[j]=1;
                 c+=2;
                 i++;
                 j++;
@@ -20,12 +18,6 @@ public:
                 j++;
             }
         }
-        int x=0;
-        for(int i=0;i<nums.size();i++)
-        {
-            if(nums[i]==1)x++;
-        }
-        cout<<x;
         return c;
     }
 };
