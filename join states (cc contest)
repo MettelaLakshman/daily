@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int a,b;
+	    cin>>a>>b;
+	    vector<int>vt(a,0);
+	    for(int i=0;i<a;i++){
+	        cin>>vt[i];
+	    }
+	    int s=0,c=0;
+	    for(int i=0;i<a;i++)
+	    {
+	        s+=vt[i];
+	        if(s>=b){
+	            c++;
+	            s=0;
+	        }
+	    }
+	    cout<<c<<"\n";
+	}
+}
