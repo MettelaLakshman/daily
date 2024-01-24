@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int n,k;
+	    cin>>n>>k;
+	    if(k==1) cout<<n;
+	    else if(k==n)
+	    {
+	        for(int i=1;i<=n;i++) cout<<i<<" ";
+	    }
+	    else if(n/k>(n/2))
+	    {
+	        for(int i=1;i<=k;i++)
+	        {
+                cout<<i<<" ";
+            }
+            cout<<"\n";
+	    }
+	    else
+	    {
+	        int t=n/k;
+            int p=t;
+            while(k--)
+            {
+                cout<<t<<" ";
+                t+=p;
+            }
+	    }
+	    cout<<"\n";
+	}
+}
