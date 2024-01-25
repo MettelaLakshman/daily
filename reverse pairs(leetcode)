@@ -1,0 +1,55 @@
+class Solution {
+public:
+    int c=0;
+    int merge(vector<int>&nums,int l,int m,int h)
+    {
+        int i=l;
+        int j=m+1;
+        int ans=0;
+        for(int k=l;k<=m;k++)
+        {
+            int j=m+1;
+            while(j<=h && nums[k]> 1LL* 2*nums[j])
+            {
+                j++;
+            }
+            ans+=j-(m+1);
+        }
+        int k=l;
+        int temp[h+1];
+        while(i<=m && j<=h){
+            if(nums[i]<nums[j])
+            {
+                temp[k++]=nums[i++];
+            }
+            else{
+                temp[k++]=nums[j++];
+            }
+        }
+        while(i<=m){
+            temp[k++]=nums[i++];
+        }
+        while(j<=h){
+            temp[k++]=nums[j++];        
+        }
+        for(int i=l;i<=h;i++)
+        {
+            nums[i]=temp[i];
+        }
+        return ans;
+    }
+    int ms(vector<int>&nums,int l,int h)
+    {
+        if(l>=h)return 0;
+        long long m=l+(h-l)/2;
+        int c=0;
+        c=ms(nums,l,m);
+        c+=ms(nums,m+1,h);
+        c+=merge(nums,l,m,h);
+        return c;
+    }
+    int reversePairs(vector<int>& nums) {
+        int n=nums.size();
+        return ms(nums,0,n-1);
+    }
+};
