@@ -1,0 +1,44 @@
+class Solution {
+public:
+    string s;
+    int c=0,w=0;
+    void tour(vector<char>&nu,vector<char>&vt,int n,int k,vector<int>&fr)
+    {
+        if(n==vt.size())
+        {
+            c++;
+            if(c==k)
+            {
+                for(int i=0;i<vt.size();i++)
+                {
+                    //cout<<vt[i];
+                    s+=vt[i];
+                    w=1;
+                }
+            }
+        }
+        for(int i=0;i<fr.size();i++)
+        {
+            if(w==1)return;
+            if(fr[i]==0)
+            {
+                fr[i]=1;
+                vt.push_back(nu[i]);
+                tour(nu,vt,n,k,fr);
+                vt.pop_back();
+                fr[i]=0;
+            }
+        }
+    }
+    string getPermutation(int n, int k) {
+        vector<char>nu;
+        for(int i=1;i<=n;i++)
+        {
+            nu.push_back(i+'0');
+        }
+        vector<int>fr(n,0);
+        vector<char>vt;
+        tour(nu,vt,n,k,fr);
+        return s;
+    }
+};
