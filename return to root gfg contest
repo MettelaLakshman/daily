@@ -1,0 +1,19 @@
+class Solution {
+  public:
+    int ReturnToRoot(int N, vector<string> &M) {
+        // code here
+        int c=0;
+        for(int i=0;i<M.size();i++)
+        {
+            if(M[i][0]=='.' && M[i][1]=='.' && M[i][2]=='/'){
+                c--;
+            }
+            else if(M[i][0]=='.' && M[i][1]=='/')
+            {
+                continue;
+            }
+            else c++;
+        }
+        return c;
+    }
+};
