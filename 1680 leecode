@@ -1,0 +1,39 @@
+class Solution {
+public:
+    long long mod=1000000007;
+    string dc(int n) 
+    { 
+        int c=0;
+        string a="";
+        for (int i=31;i>=0;i--) { 
+            int k=n >> i; 
+            if (k&1){
+                c=1;
+                a+='1'; 
+            }
+            else {
+                if(c) a+='0';
+            }
+        }
+        return a; 
+    }
+    int concatenatedBinary(int n) {
+        string ans;
+        for(int i=1;i<=n;i++){
+            string s=dc(i);
+            ans+=s;
+        }
+        long long k=0,w=1,s=0;
+        int d=0;
+        for(int i=ans.size()-1;i>=0;i--)
+        {
+            int x=int(ans[i])-48;
+            k=w*x;
+            s+=k;
+            s=s%mod;
+            w=w*2;  
+            w=w%mod;  
+        }
+        return s%mod;
+    }
+};
